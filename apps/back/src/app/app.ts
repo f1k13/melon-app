@@ -1,0 +1,11 @@
+import { EModule } from "@back/enums/module.enum";
+import { createAppContainer } from "@back/modules/app.module";
+import Fastify from "fastify";
+
+export async function buildApp() {
+  const app = Fastify();
+  const container = createAppContainer(app);
+  const userRoutes = container.get(EModule.USER);
+  userRoutes.register();
+  return app;
+}
