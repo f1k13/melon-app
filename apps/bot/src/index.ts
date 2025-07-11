@@ -1,13 +1,14 @@
 import { Bot, InlineKeyboard } from "grammy";
 import { config } from "dotenv";
+import { envConfig } from "./env";
 config();
 
-const bot = new Bot(process.env.BOT_TOKEN!);
+const bot = new Bot(envConfig.BOT_TOKEN);
 
 bot.command("start", async (ctx) => {
-  const username = ctx.from?.username || "друг";
+  const username = ctx.from?.username || "Гость";
 
-  const webAppUrl = "https://your-tma-url.com";
+  const webAppUrl = envConfig.WEB_APP_URL;
 
   const keyboard = new InlineKeyboard().webApp("Открыть приложение", webAppUrl);
 

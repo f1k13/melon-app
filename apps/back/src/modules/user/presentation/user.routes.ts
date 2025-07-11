@@ -1,15 +1,20 @@
-import { FastifyInstance } from "fastify";
+import { FastifyInstance, FastifyPluginOptions } from "fastify";
 import { UserController } from "./user.controller";
+import { AppRoutes } from "@back/modules/presentation/app.routes";
 
-export class UserRoutes {
+export class UserRoutes extends AppRoutes {
   app: FastifyInstance;
   userController: UserController;
   constructor(app: FastifyInstance, userController: UserController) {
+    super();
     this.app = app;
     this.userController = userController;
   }
 
   public register() {
-    this.app.get("/users", this.userController.create);
+    const bind = this.bindController(this.userController);
+    return async (router: FastifyInstance, _opts: FastifyPluginOptions) => {
+      router.post("/user/auth", bind("auth"));
+    };
   }
 }

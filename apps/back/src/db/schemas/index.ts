@@ -1,5 +1,5 @@
-import { userSchema } from "./user/user.schema";
+import { userSchemas } from "./user/user.schema";
 
 export const schemas = {
-  userSchema,
+  ...userSchemas,
 };

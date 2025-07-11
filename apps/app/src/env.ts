@@ -4,7 +4,6 @@ import { z } from "zod";
 config();
 
 const envSchema = z.object({
-  BOT_TOKEN: z.string().nonempty("BOT_TOKEN is req"),
   WEB_APP_URL: z.string().nonempty("WEB_APP_URL is req"),
 });
 
