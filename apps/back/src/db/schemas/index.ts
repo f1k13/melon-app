@@ -1,5 +1,8 @@
-import { userSchemas } from "./user/user.schema";
+import { logsSchema } from "./logs/logs.schema";
+import { userConfigSchema, userProfileSchema } from "./user/user.schema";
 
 export const schemas = {
-  ...userSchemas,
+  userProfileSchema,
+  userConfigSchema,
+  logsSchema,
 };

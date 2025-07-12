@@ -1,11 +1,12 @@
 import { UserController } from "./presentation/user.controller";
 import { DIContainer } from "@back/di";
-import { UserRepository } from "./infrastucture/user.repository";
+import { UserRepository } from "./infrastructure/user.repository";
 import { db } from "@back/db";
 import { UserService } from "./domain/user.service";
 import { EModule } from "@back/enums/module.enum";
 import { FastifyInstance } from "fastify";
 import { UserRoutes } from "./presentation/user.routes";
+import { LogsRepository } from "../infrastructure/logs/logs.repostiory";
 
 export class UserModule {
   static register(container: DIContainer, app: FastifyInstance) {

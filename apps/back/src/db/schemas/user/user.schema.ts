@@ -1,7 +1,7 @@
 import { sql } from "drizzle-orm";
 import { boolean, pgTable, text, timestamp, uuid } from "drizzle-orm/pg-core";
 
-const userConfigSchema = pgTable("user_config", {
+export const userConfigSchema = pgTable("user_config", {
   id: uuid("id").defaultRandom().primaryKey(),
   tgId: text("tg_id").unique().notNull(),
   tgUsername: text("tg_username").unique().notNull(),
@@ -14,7 +14,7 @@ const userConfigSchema = pgTable("user_config", {
     .notNull(),
 });
 
-const userProfileSchema = pgTable("user_profile", {
+export const userProfileSchema = pgTable("user_profile", {
   id: uuid().defaultRandom().primaryKey(),
   userId: uuid("user_id")
     .references(() => userConfigSchema.id)
@@ -25,8 +25,3 @@ const userProfileSchema = pgTable("user_profile", {
   createdAt: timestamp("createdAt").default(sql`CURRENT_TIMESTAMP`),
   updatedAt: timestamp("updatedAt").default(sql`CURRENT_TIMESTAMP`),
 });
-
-export const userSchemas = {
-  userConfigSchema,
-  userProfileSchema,
-};

@@ -1,6 +1,6 @@
 import { drizzle } from "drizzle-orm/postgres-js";
 import { envConfig } from "../env";
-import { schemas } from "./schemas";
+import * as schema from "./schemas";
 import postgres = require("postgres");
 
 if (!envConfig) {
@@ -8,6 +8,6 @@ if (!envConfig) {
 }
 const queryClient = postgres(String(envConfig.DATABASE_URL));
 
-export const db = drizzle(queryClient, { schema: schemas });
+export const db = drizzle(queryClient, { schema });
 
 export type TDB = ReturnType<typeof drizzle>;
