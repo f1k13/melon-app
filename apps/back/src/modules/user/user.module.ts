@@ -10,7 +10,7 @@ import { LogsRepository } from "../infrastructure/logs/logs.repostiory";
 
 export class UserModule {
   static register(container: DIContainer, app: FastifyInstance) {
-    const userRepository = new UserRepository(db);
+    const userRepository = new UserRepository();
     const userService = new UserService(userRepository);
     const userController = new UserController(userService);
     const userRoutes = new UserRoutes(app, userController);

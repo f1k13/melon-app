@@ -25,3 +25,9 @@ export const userProfileSchema = z.object({
 });
 
 export type TUserProfileDto = z.infer<typeof userProfileSchema>;
+
+export const getUserByIdSchema = z.object({
+  userId: z.string().min(1),
+});
+
+export type TGetUserById = z.infer<typeof getUserByIdSchema>;

@@ -1,7 +1,8 @@
 import { UserRepository } from "../infrastructure/user.repository";
-import jwt from "jsonwebtoken";
+import * as jwt from "jsonwebtoken";
 import { parse } from "@telegram-apps/init-data-node";
 import { envConfig } from "@back/env";
+import { TGetUserById } from "../model/user.model";
 export class UserService {
   userRepository: UserRepository;
   private secretKey: string;
@@ -24,13 +25,18 @@ export class UserService {
       ...dto.user,
       authDate: dto.authDate.toISOString(),
     });
-
+    await this.userRepository.createUserProfile({
+      userId: user.id,
+    });
     const token = this.generateToken(user.tgId, user.id);
 
     return {
       token,
       user,
     };
+  }
+  public async getUserById(dto: TGetUserById) {
+    return await this.userRepository.getUserById(dto.userId);
   }
   private generateToken(tgId: string, id: string) {
     const token = jwt.sign({ id: id, tgId }, this.secretKey, {

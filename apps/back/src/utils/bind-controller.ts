@@ -1,7 +1,7 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 
 export interface ICtx {
-  req: FastifyRequest;
+  req: FastifyRequest & { user?: { userId: string } };
   reply: FastifyReply;
 }
 
@@ -14,6 +14,9 @@ export function bindController<T extends object>(instance: T) {
     }
 
     return (req: FastifyRequest, reply: FastifyReply) =>
-      (controller as Function).call(instance, { req, reply });
+      (controller as Function).call(instance, {
+        req: req as FastifyRequest & { user?: { id: string } },
+        reply,
+      });
   };
 }

@@ -15,6 +15,7 @@ export class UserRoutes extends AppRoutes {
     const bind = this.bindController(this.userController);
     return async (router: FastifyInstance, _opts: FastifyPluginOptions) => {
       router.post("/user/auth", bind("auth"));
+      router.get("/user/index", this.use(this.auth), bind("getMe"));
     };
   }
 }

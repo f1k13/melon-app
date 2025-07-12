@@ -5,6 +5,7 @@ import Fastify from "fastify";
 
 export async function buildApp() {
   const app = Fastify();
+  app.decorateRequest("user", null);
   const container = createAppContainer(app);
   const userRoutes = container.get(EModule.USER);
   const allRouters = [userRoutes];

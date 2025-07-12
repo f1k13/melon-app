@@ -23,12 +23,27 @@ export class UserController extends AppController {
         user,
       });
     } catch (error) {
-      this.handlerError(
-        "Ошибка в user.controller.auth",
+      this.handlerError({
+        module: EModule.USER,
+        method: "userController.auth",
         error,
-        ctx.reply,
-        EModule.USER
-      );
+        reply: ctx.reply,
+      });
+    }
+  }
+  public async getMe(ctx: ICtx) {
+    try {
+      const userId = ctx.req.user.userId;
+      const user = await this.userService.getUserById({ userId });
+      ctx.reply.status(200).send(user);
+    } catch (error) {
+      this.handlerError({
+        module: EModule.USER,
+        method: "userController.getMe",
+        error,
+        reply: ctx.reply,
+        userId: ctx.req.user.userId,
+      });
     }
   }
 }

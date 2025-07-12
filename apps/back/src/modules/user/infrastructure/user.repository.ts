@@ -5,14 +5,9 @@ import {
   userConfigSchema,
   userProfileSchema,
 } from "@back/db/schemas/user/user.schema";
+import { AppRepository } from "@back/modules/infrastructure/app.repository";
 
-export class UserRepository {
-  db: TDB;
-
-  constructor(db: TDB) {
-    this.db = db;
-  }
-
+export class UserRepository extends AppRepository {
   public async getUserByTgId(tgId: string) {
     const [user] = await this.db
       .select()
@@ -60,8 +55,11 @@ export class UserRepository {
         profile: userProfileSchema,
       })
       .from(userConfigSchema)
-      .where((it) => eq(it.user.id, id))
-      .leftJoin(userConfigSchema, eq(userProfileSchema.userId, id));
+      .leftJoin(
+        userProfileSchema,
+        eq(userProfileSchema.userId, userConfigSchema.id)
+      )
+      .where(eq(userConfigSchema.id, id));
     return user;
   }
 }
