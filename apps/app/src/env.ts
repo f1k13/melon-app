@@ -4,7 +4,7 @@ import { z } from "zod";
 config();
 
 const envSchema = z.object({
-  WEB_APP_URL: z.string().nonempty("WEB_APP_URL is req"),
+  VITE_API_URL: z.string().nonempty("WEB_APP_URL is req"),
 });
 
 const parsedEnv = envSchema.safeParse(process.env);
