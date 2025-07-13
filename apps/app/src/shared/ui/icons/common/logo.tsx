@@ -1,31 +1,33 @@
+import React from "react";
+
 export default function Logo() {
   return (
     <svg
-      width="258"
-      height="258"
-      viewBox="0 0 258 258"
+      width="126"
+      height="126"
+      viewBox="0 0 126 126"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
     >
       <rect
-        x="71.5115"
-        width="199.548"
-        height="199.548"
-        transform="rotate(21 71.5115 0)"
-        fill="url(#pattern0_15_236)"
+        x="34.7617"
+        width="97"
+        height="97"
+        transform="rotate(21 34.7617 0)"
+        fill="url(#pattern0_14_6)"
       />
       <defs>
         <pattern
-          id="pattern0_15_236"
+          id="pattern0_14_6"
           patternContentUnits="objectBoundingBox"
           width="1"
           height="1"
         >
-          <use xlinkHref="#image0_15_236" transform="scale(0.00078125)" />
+          <use xlinkHref="#image0_14_6" transform="scale(0.00078125)" />
         </pattern>
         <image
-          id="image0_15_236"
+          id="image0_14_6"
           width="1280"
           height="1280"
           preserveAspectRatio="none"

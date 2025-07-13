@@ -15,7 +15,7 @@ export default function ProtectedLayout() {
     }
   }, [token]);
   return (
-    <div className={"bg-[#313131] h-screen w-screen"}>
+    <div className={"bg-[#313131] h-screen w-screen px-1"}>
       <Outlet />
     </div>
   );
