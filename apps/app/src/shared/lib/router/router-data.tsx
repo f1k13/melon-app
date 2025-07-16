@@ -3,7 +3,8 @@ import MainLayout from "@/app/layouts/main-layout";
 import ProtectedLayout from "@/app/layouts/protected-layout";
 import AuthPage from "@/pages/auth.page";
 import MainPage from "@/pages/main.page";
-import { AUTH_PAGE, MAIN_PAGE } from "@/shared/consts/links";
+import OnBoarding from "@/pages/onboarding.page";
+import { AUTH_PAGE, MAIN_PAGE, ONBOARDING_PAGE } from "@/shared/consts/links";
 import { createBrowserRouter } from "react-router-dom";
 
 export const routes = createBrowserRouter([
@@ -25,6 +26,10 @@ export const routes = createBrowserRouter([
           {
             element: <MainPage />,
             path: MAIN_PAGE,
+          },
+          {
+            element: <OnBoarding />,
+            path: ONBOARDING_PAGE,
           },
         ],
       },

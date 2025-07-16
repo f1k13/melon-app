@@ -19,9 +19,10 @@ export type TUserDto = z.infer<typeof userDtoSchema>;
 
 export const userProfileSchema = z.object({
   userId: z.string().min(1),
-  birthday: z.date(),
-  nickname: z.string(),
-  bio: z.string(),
+  birthday: z.date().optional(),
+  nickname: z.string().optional(),
+  bio: z.string().optional(),
+  interests: z.array(z.string().min(1)),
 });
 
 export type TUserProfileDto = z.infer<typeof userProfileSchema>;

@@ -7,5 +7,5 @@ export function getValue(key: string) {
 }
 
 export function deleteValue(key: string) {
-  localStorage.getItem(key);
+  localStorage.removeItem(key);
 }

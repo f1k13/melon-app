@@ -4,11 +4,8 @@ export default function AuthLayout() {
   return (
     <div
       className={
-        "flex flex-col items-center justify-center max-w-[300px] mx-auto "
+        "flex flex-col justify-center items-center mx-auto max-w-[300px]"
       }
-      style={{
-        margin: "auto",
-      }}
     >
       <Outlet />
     </div>

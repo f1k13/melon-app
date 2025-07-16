@@ -5,7 +5,9 @@
       "@back/*": ["apps/back/src/*"],
       "@bot/*": ["apps/bot/src/*"],
       "@app/*": ["apps/app/src/*"]
-    }
+    },
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   },
   "exclude": ["node_modules", "dist"]
 }

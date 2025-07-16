@@ -6,6 +6,7 @@ import {
   userProfileSchema,
 } from "@back/db/schemas/user/user.schema";
 import { AppRepository } from "@back/modules/infrastructure/app.repository";
+import { interestsSchema } from "@back/db/schemas/interests/interests.schema";
 
 export class UserRepository extends AppRepository {
   public async getUserByTgId(tgId: string) {
@@ -61,5 +62,8 @@ export class UserRepository extends AppRepository {
       )
       .where(eq(userConfigSchema.id, id));
     return user;
+  }
+  public async getAllInterests() {
+    return await db.select().from(interestsSchema);
   }
 }

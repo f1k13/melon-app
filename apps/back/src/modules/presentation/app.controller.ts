@@ -16,7 +16,7 @@ export class AppController {
       throw error;
     }
   }
-  protected handlerError({
+  protected async handlerError({
     module,
     error,
     reply,
@@ -30,7 +30,7 @@ export class AppController {
     userId?: string;
   }) {
     if (error instanceof Error) {
-      this.logsService.insertLog({
+      await this.logsService.insertLog({
         text: error.message,
         module,
         userId,
@@ -43,5 +43,23 @@ export class AppController {
       console.log(method);
       reply.status(400).send({ message: "Неизвестная ошибка" });
     }
+  }
+  protected async handlerSuccess({
+    module,
+    text,
+    method,
+    userId,
+  }: {
+    module: EModule;
+    text: string;
+    method: string;
+    userId?: string;
+  }) {
+    await this.logsService.insertLog({
+      text,
+      method,
+      module,
+      userId,
+    });
   }
 }

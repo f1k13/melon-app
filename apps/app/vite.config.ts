@@ -11,8 +11,8 @@ export default defineConfig({
     host: "0.0.0.0",
     port: 5173,
     https: {
-      key: fs.readFileSync(path.resolve(__dirname, "local.melon.test-key.pem")),
-      cert: fs.readFileSync(path.resolve(__dirname, "local.melon.test.pem")),
+      key: fs.readFileSync(path.resolve(__dirname, "melon.test-key.pem")),
+      cert: fs.readFileSync(path.resolve(__dirname, "melon.test.pem")),
     },
   },
   resolve: {

@@ -1,25 +1,27 @@
-import { envConfig } from "@/env";
+// import { envConfig } from "@/env";
 import axios from "axios";
+import { getValue } from "../native/local-storage";
+import { ACCESS_TOKEN_KEY } from "../consts/local-stotage";
 
 export const api = axios.create({
-  baseURL: envConfig?.VITE_API_URL + "/api",
+  baseURL: "http://localhost:3000/api",
   headers: {
     "Content-Type": "application/json",
   },
 });
-// api.interceptors.request.use((config) => {
-//   const token = localStorageToken.getAccessToken();
+api.interceptors.request.use((config) => {
+  const token = getValue(ACCESS_TOKEN_KEY);
 
-//   if (!token) {
-//     return config;
-//   }
+  if (!token) {
+    return config;
+  }
 
-//   if (token) {
-//     config.headers.Authorization = `Bearer ${token}`;
-//   }
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
 
-//   return config;
-// });
+  return config;
+});
 
 // api.interceptors.response.use(
 //   (response) => response,
